@@ -25,6 +25,13 @@ RSpec.describe Article, type: :model do
     expect(article.save).to be(true)
   end
 
+  it 'should accept status "archived"' do
+    article = Article.new(title: 'Greatest showman', body: 'A musical journey you will never forget...',
+                          status: 'archived')
+
+    expect(article.save).to be(true)
+  end
+
   it 'should accept status "draft"' do
     article = Article.new(title: 'Greatest showman', body: 'A musical journey you will never forget...',
                           status: 'draft')
