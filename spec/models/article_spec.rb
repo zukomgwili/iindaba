@@ -22,4 +22,10 @@ RSpec.describe Article, type: :model do
 
     expect(article.save).to be(false)
   end
+
+  it 'should save valid article' do
+    article = Article.new(title: 'Energy', body: 'The future of energy rests on...')
+
+    expect(article.save).to be(true)
+  end
 end
