@@ -20,7 +20,14 @@ RSpec.describe Article, type: :model do
   end
 
   it 'should save valid article' do
-    article = Article.new(title: 'Energy', body: 'The future of energy rests on...')
+    article = Article.new(title: 'Energy', body: 'The future of energy rests on...', status: 'draft')
+
+    expect(article.save).to be(true)
+  end
+
+  it 'should accept status "draft"' do
+    article = Article.new(title: 'Greatest showman', body: 'A musical journey you will never forget...',
+                          status: 'draft')
 
     expect(article.save).to be(true)
   end
