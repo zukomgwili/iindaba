@@ -8,4 +8,12 @@ RSpec.describe Article, type: :model do
 
     expect { article.reload }.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  it 'should not save article without body' do
+    article = Article.new(title: 'This is a title')
+
+    article.save
+
+    expect { article.reload }.to raise_error(ActiveRecord::RecordNotFound)
+  end
 end
