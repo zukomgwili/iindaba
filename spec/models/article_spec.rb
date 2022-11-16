@@ -4,9 +4,7 @@ RSpec.describe Article, type: :model do
   it 'should not save article without title' do
     article = Article.new(body: 'This is the body of an article')
 
-    article.save
-
-    expect { article.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    expect(article.save).to be(false)
   end
 
   it 'should not save article without body' do
@@ -14,7 +12,7 @@ RSpec.describe Article, type: :model do
 
     article.save
 
-    expect { article.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    expect(article.save).to be(false)
   end
 
   it 'should not save article with body less than 10 characters' do
@@ -22,6 +20,6 @@ RSpec.describe Article, type: :model do
 
     article.save
 
-    expect { article.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    expect(article.save).to be(false)
   end
 end
